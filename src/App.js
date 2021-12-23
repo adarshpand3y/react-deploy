@@ -50,6 +50,9 @@ function App() {
           <Route exact path="/">
             <TextForm alertFunc={showAlert} theme={theme} />
           </Route>
+          <Route exact path="/textutils-react/">
+            <TextForm alertFunc={showAlert} theme={theme} />
+          </Route>
         </Switch>
       </Router>
     </>
