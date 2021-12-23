@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 
 export default function TextForm(props) {
+  const lightColours = {backgroundColor: 'white', color: 'black'};
+  const darkColours = {backgroundColor: '#333', color: 'white'};
+
+
   const [text, setText] = useState("");
 
   const handleUpCLick = ()=> {
@@ -40,18 +44,19 @@ export default function TextForm(props) {
 
     return (
       <>
-        <div className="container my-2">
+        <div style={props.theme==='light'?lightColours:darkColours} className="container my-2">
           <h2 className="mb-4">
             Enter your text below and click on the respective button to analyze
           </h2>
           <div className="mb-3">
             <textarea
-              className="form-control"
+              className={`form-control bg-${props.theme==='light'?'light':'dark'}`}
               id="textInput"
               rows="10"
               value={text}
               onChange={handleOnChange}
               placeholder="Enter your text here"
+              style={props.theme==='light'?{color: '#212529'}:{color: '#fff'}}
             ></textarea>
           </div>
           <button type="button" className="btn btn-primary m-2" onClick={handleUpCLick}>
@@ -74,11 +79,11 @@ export default function TextForm(props) {
           </button>
         </div>
         <div className="container">
-          <h3>Summary</h3>
-          <p>{text.split(" ").filter((element) => {return element.length!==0}).length} word(s) and {text.length} character(s).</p>
-          <p>{0.008*text.split(" ").filter((element) => {return element.length!==0}).length} minutes to speak.</p>
-          <h3>Preview</h3>
-          <p>{text?text:"Please write some text to preview."}</p>
+          <h3 className={`text-${props.theme==='light'?'dark':'light'}`}>Summary</h3>
+          <p className={`text-${props.theme==='light'?'dark':'light'}`}>{text.split(" ").filter((element) => {return element.length!==0}).length} word(s) and {text.length} character(s).</p>
+          <p className={`text-${props.theme==='light'?'dark':'light'}`}>{0.008*text.split(" ").filter((element) => {return element.length!==0}).length} minutes to speak.</p>
+          <h3 className={`text-${props.theme==='light'?'dark':'light'}`}>Preview</h3>
+          <p className={`text-${props.theme==='light'?'dark':'light'}`}>{text?text:"Please write some text to preview."}</p>
         </div>
       </>
     );

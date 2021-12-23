@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-export default function Navbar() {
+export default function Navbar(props) {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className={`navbar navbar-expand-lg navbar-${props.theme==='light'?'light':'dark'} bg-${props.theme==='light'?'light':'dark'}`}>
                 <div className="container">
                     <a className="navbar-brand" style={{fontSize: '25px', fontWeight: '600'}} href="/">React Textutils</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,23 +17,16 @@ export default function Navbar() {
                             <li className="nav-item">
                                 <a className="nav-link" href="/">About Us</a>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Find us On
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="/">FaceBook</a></li>
-                                    <li><a className="dropdown-item" href="/">Twitter</a></li>
-                                    <li><a className="dropdown-item" href="/">Instagram</a></li>
-                                    <li><hr className="dropdown-divider" /></li>
-                                    <li><a className="dropdown-item" href="/">YouTube</a></li>
-                                </ul>
+                            <li className="nav-item">
+                                <a className="nav-link" target="_blank" href="https://github.com/adarshpand3y/textutils-react">Github Repository</a>
                             </li>
                         </ul>
-                        <form className="d-flex">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+                        <div className="d-flex">
+                            <div className="form-check form-switch">
+                                <label className="form-check-label" style={props.theme==='light'?{color:'#707071'}:{color:'#9a9c9e'}} htmlFor="changeThemeSwitch">Switch Theme</label>
+                                <input className="form-check-input" type="checkbox" role="switch" onClick={props.changeTheme} id="changeThemeSwitch"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>

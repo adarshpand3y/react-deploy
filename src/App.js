@@ -7,6 +7,18 @@ import TextForm from './components/TextForm.js';
 
 function App() {
   const [alert, setAlert] = useState("");
+  const [theme, setTheme] = useState('light');
+
+  const switchTheme = (event) => {
+    if(theme === 'light') {
+      setTheme('dark');
+      document.body.style.backgroundColor = '#333';
+    }
+    else {
+      setTheme('light');
+      document.body.style.backgroundColor = '#fff';
+    }
+  }
 
   const showAlert = (message) => {
     setAlert(message);
@@ -17,12 +29,12 @@ function App() {
 
   return (
     <>
-      <Navbar/>
+      <Navbar changeTheme={switchTheme} theme={theme}/>
       <div style={{minHeight:'60px'}}>
         <Alert alertMessage={alert} />
       </div>
-      <TextForm alertFunc={showAlert}/>
-      {/* <About/> */}
+      <TextForm alertFunc={showAlert} theme={theme}/>
+      {/* <About theme={theme}/> */}
     </>
   );
 }
