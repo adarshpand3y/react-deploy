@@ -19,7 +19,7 @@ export default function Navbar(props) {
                                 <Link className="nav-link" to="/about">About Us</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" target="_blank" href="https://github.com/adarshpand3y/textutils-react">Github Repository</a>
+                                <a className="nav-link" rel="noreferrer" target="_blank" href="https://github.com/adarshpand3y/textutils-react">Github Repository</a>
                             </li>
                         </ul>
                         <div className="d-flex">

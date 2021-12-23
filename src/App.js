@@ -7,8 +7,7 @@ import About from './components/About';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 function App() {
@@ -19,12 +18,14 @@ function App() {
     if (theme === 'light') {
       setTheme('dark');
       document.body.style.backgroundColor = '#333';
-      document.title = 'TextUtils - Home (Dark Mode)'
+      document.title = 'TextUtils - Home (Dark Mode)';
+      showAlert("Switched to Dark Theme");
     }
     else {
       setTheme('light');
       document.body.style.backgroundColor = '#fff';
-      document.title = 'TextUtils - Home (Light Mode)'
+      document.title = 'TextUtils - Home (Light Mode)';
+      showAlert("Switched to Light Theme");
     }
   }
 
@@ -32,7 +33,7 @@ function App() {
     setAlert(message);
     setTimeout(() => {
       setAlert("");
-    }, 2000);
+    }, 1500);
   }
 
   return (
